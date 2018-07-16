@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('Visor', ['ngRoute','ngResource','angularSoap']);
+var app = angular.module('Haip', ['ngRoute','ngResource']);
 
 app.config(function($routeProvider, $locationProvider) {
 
@@ -19,4 +19,3 @@ app.config(function($routeProvider, $locationProvider) {
 app.config(function($locationProvider) {
         $locationProvider.html5Mode(true);
     });
-

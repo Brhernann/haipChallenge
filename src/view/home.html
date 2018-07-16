@@ -1,9 +1,22 @@
-
 <div class="initial">
-    <h1>Hello {{yourName}}!</h1>
-  <label>Name:</label>
-  <input type="text" ng-model="yourName" placeholder="Enter a name here"><br><br> 
-  <input  class="btn btn-danger" type="submit" name="buttom" value="click me!" ng-click="click(yourName)">
+    <h1>Hello !</h1>
+  <label>Number:</label>
+  <input type="number" ng-model="MyLenght" placeholder="Enter a Number here"><br><br> 
+  <input  class="btn btn-danger" type="submit" name="buttom_1" value="Level 1!" ng-click="Level_1()">
+  <input  class="btn btn-danger" type="submit" name="buttom_2" value="Level 2!" ng-click="Level_2()">
+  <input  class="btn btn-danger" type="submit" name="buttom_3" value="Level 3!" ng-click="Level_3()">
+  <input  class="btn btn-primary" type="submit" name="buttom_4" value="Endpoint 1!" ng-click="Endpoint_1(MyLenght)">
+  <input  class="btn btn-primary" type="submit" name="buttom_5" value="Endpoint 2!" ng-disabled="inactive" ng-click="Endpoint_2()">
   <br><br>
-  <span ng-show="ver"><b> Consultacupo - Reservacupo - Anulacupo</b></span>
+    
+  <div ng-show="thisResponse">
+      <p>Response: </p>
+      <pre class="thispre">{{myhtml}}</pre>
+  </div>
+
+  <div ng-show="thisExample">
+    <p>Example: </p>
+    <pre class="thispre">{{example}}</pre>
+  </div>
+
 </div>

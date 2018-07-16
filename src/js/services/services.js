@@ -1,24 +1,50 @@
 'use strict';
 
-var app = angular.module('Visor');
+var app = angular.module('Haip');
 
-app.service('MyServices', function($resource, $httpParamSerializerJQLike) {
-    var service = $resource('URL/:action', null,
+app.service('HaipServices', function($resource, $httpParamSerializerJQLike) {
+    var service = $resource('http://haip.cl/api/challenge/:action', null,
       {
-    'ws_1': { method:'POST',
-                      params: { action : 'Consultacupo' },
+    'LevelOne': { method:'OPTIONS',
+                      params: { action : '' },
                       headers : {"Content-Type": "application/x-www-form-urlencoded"},
                       transformRequest: function(data) {
                       return $httpParamSerializerJQLike(data);
                   }},
-    'ws_2': { method:'POST',
-                      params: { action : 'Reservacupo' },
+    'LevelTwo': { method:'POST',
+                      params: { action : '' },
                       headers : {"Content-Type": "application/x-www-form-urlencoded"},
                       transformRequest: function(data) {
                       return $httpParamSerializerJQLike(data);
-                  }},
+                  }}, 
+    'LevelThree': { method:'GET',
+                      params: { action : 'generate-test' },
+                      headers : {"haip-test": "haip-OK"},
+                      transformRequest: function(data) {
+                      return $httpParamSerializerJQLike(data);
+                  }},                 
       });
 
+    return service;
+  })
+
+  app.service('LocalServices', function($resource, $httpParamSerializerJQLike) {
+    var service = $resource('http://localhost:8081/api/:action', null,
+      {    
+    'EndpointOne': { method:'POST',
+                      params: { action : 'EndpointOne' },
+                      headers : {"Content-Type": "application/x-www-form-urlencoded"},
+                      transformRequest: function(data) {
+                      return $httpParamSerializerJQLike(data);
+                  }},  
+    'EndpointTwo': { method:'POST',
+                      params: { action : 'EndpointTwo' },
+                      headers : {"Content-Type": "application/x-www-form-urlencoded"},
+                      transformRequest: function(data) {
+                      return $httpParamSerializerJQLike(data);
+                  }},             
+                  
+      });
 
     return service;
   })

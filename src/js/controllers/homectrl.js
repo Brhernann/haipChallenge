@@ -1,35 +1,74 @@
 'use strict';
 
-var app = angular.module('Visor');
+var app = angular.module('Haip');
 
-app.controller('HomeCtrl', function ($scope, MyServices, $log) {
+app.controller('HomeCtrl', function ($scope, HaipServices, LocalServices, $log) {
 
-  $scope.yourName;
-  $scope.ver = false;
+  $scope.inactive= true;
+  $scope.MyLenght = 5
+  var answer = ''
 
-  $scope.click = function (e) {
+  //CHALLENGER
 
-    if (e == null) {
-      $scope.yourName = 'Desconocido';
-      $log.error('Sin nombre no hay app')
+  $scope.Level_1 = () => {
 
-    } else if (e == 'saltala'){
+    HaipServices.LevelOne({},(res) => {
+      $scope.myhtml = res.POST.description;
+      $scope.thisResponse = true; //show
+      $scope.thisExample = false; //hide
+    });
+  }
 
-      $scope.ver = true;
-      $scope.yourName = null;
+  $scope.Level_2 = () => {
 
-    } else if (e == 'WS1') {
+    HaipServices.LevelTwo({
+      firstName: 'Hernan',
+      lastName: 'Humaña',
+      email: 'herhuglz@gmail.com'
+    },(res) => {
+      $scope.myhtml = res.nextStepExplanation;
+      $scope.thisResponse = true; //show
+      $scope.thisExample = false; //hide
+    });
+  }
 
-      $log.info('Conexion a WS1')
+  $scope.Level_3 = () => {
+    
+    HaipServices.LevelThree({},(res) => {
+      $scope.myhtml = res.nextStepExplanation;
+      $scope.example = res.example;
+      $scope.thisResponse = true; //show
+      $scope.thisExample = true; //show
+    });
+  }
 
-    } else if (e == 'WS2') {
+  // ENDPOINTS
 
-      $log.info('Conexion a WS2')
+  $scope.Endpoint_1 = (number) => {
+    LocalServices.EndpointOne({
+      data: number
+    },(res) => {
+      $scope.myhtml = res.data;
+      answer = res.data
+      $scope.thisResponse = true; //show
+      $scope.thisExample = false; //hide
+      $scope.inactive= false; // unlock buttom
+    }, (err) => {
+      console.log(err.data.error[0].message)
+    })
+  }
 
-    }  else {
-      $log.info("Bienvenido al generdor disparado desde AWS");
-    }
-
+  $scope.Endpoint_2 = () => {
+    LocalServices.EndpointTwo({
+      data: answer
+    },(res) => {
+      $scope.myhtml = res;
+      $scope.thisResponse = true; //show
+      $scope.thisExample = false; //hide
+      $scope.inactive= true; // lock the buttom
+    }, (err) => {
+      console.log(err.data.error[0].message)
+    })
   }
 
 });

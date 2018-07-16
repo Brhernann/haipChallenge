@@ -1,10 +1,6 @@
 var express = require('express');
 var path = require('path');
-var ejs = require('ejs');
 var app = express();
-var mysql = require('mysql');
-var http = require("http");
-
 
 app.use(express.static(path.join(__dirname,'src')));
 
@@ -18,38 +14,11 @@ app.use(function(req, res, next) {
 });
 
 app.get('/',function(request,resp,next){
-
-resp.render('index')
-
+  resp.render('index')
 });
 
-var ConsultaCupo = require('./routes/ConsultaCupo.js');
+let Webservices = require('./routes/Webservices.js');
 
-app.use('/webservices', ConsultaCupo);
+app.use('/api', Webservices);
 
-app.listen(8081, function(){
-  console.log('El servidor Esta En llamas!');
-});
-
-
-var connection = mysql.createConnection({
-
-   host     : process.env.RDS_HOSTNAME,
-   user     : process.env.RDS_USERNAME,
-   password : process.env.RDS_PASSWORD,
-   database : process.env.RDS_DATABASE,
-   port     : process.env.RDS_PORT
-
-});
-
-connection.connect(function(err) {
-  if (err) {
-    console.error('Database connection failed: ' + err.stack);
-    return;
-  }
-
-  console.log('Connected to database.');
-});
-
-connection.end();
-
+app.listen(8081, () => console.log('Server ON'));

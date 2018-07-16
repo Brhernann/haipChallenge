@@ -1,0 +1,40 @@
+{
+    "nextStepExplanation": "Congratilations!! you almost there! this is the last step! luck!\n       
+     Paso 5 y final. Haz una un botón que llame a un Endpoint que genere una cadena con esta forma \"xx**x\" 
+     donde el length sea definido como parámetro y las cantidad de \"*\" Sean Randon así como la cantidad de \"x\".\n        
+     
+     Debes mostrar el en front el resultado.\n        
+     
+     Luego ese resultado debes introducirlo en un input pasándoselo a un Endpoint que finalmente reemplazará 
+     todas las \"x\" de la cadena por todas las combinaciones posibles de 1 y 0. El número de permutaciones es calculable con la siguiente formula:\n        
+     
+     n!+2= cantidad de permutaciones donde \"n\" es la cantidad de \"x\" en la cadena.\n        
+     
+     *Cómo resumen del paso final: \n        
+     
+     La idea es realizar 2 Endpoints uno que genere la cadena de entrada del siguiente que hará las permutaciones. Todo obviamente ejecutado desde el front.*",
+
+    "example": "Endpoint 1\n            
+    In: usando como Length 5\n        
+    Out: \"x*x*(Random cantidad de x y  hasta llegar a legth 5 pudo haber sido \"xxxxx\" o \"**x\" o \"**\")\n        
+    
+    Usando este mismo output como input para el siguiente Endpoint:\n        
+    
+    Endpoint 2\n        
+    In: \"x*x**\"\n        
+    Out: \"0*0*\", \"1*0\", \"1*1\", \"0*1*\"\n        
+    
+    Solo si quieres chekear la cantidad de permutacones de tu salida (2!+2=4)\n        ---------------------\n        \n        
+    
+    Endpoint 1\n        
+    In: usando como Length: 6\n        
+    Out: \"x*xx\"(Random cantidad de x y  hasta llegar a legth 6 pudo haber sido \"xxxx*x\" o \"xx**x\" o \"***\")\n        
+    
+    Usando este mismo output como input para el siguiente Endpoint:\n        
+    
+    Endpoint 2\n        
+    In: \"x*xx\"\n        
+    Out: \"0*00\", \"1*00\", \"1*10\", \"1*11\", \"0*01\", \"0*10\", \"1*01\", \"0*11\"\n        \n        
+    
+    Solo si quieres chekear la cantidad de permutacones de tu salida(3!+2=8)"
+}

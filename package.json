@@ -1,34 +1,26 @@
 {
-  "name": "visor",
+  "name": "Haip",
   "version": "1.0.0",
-  "description": "Visor para Saltala",
+  "description": "Haip challenger",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "author": "HernannStack",
+  "author": "Hernan",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "latest",
     "body-parser": "^1.17.1",
     "bower": "^1.8.0",
     "ejs": "^2.5.6",
     "express": "^4.15.2",
     "gulp-livereload": "^3.8.1",
     "gulp-wiredep": "^1.2.0",
+    "joi": "^13.4.0",
     "mysql": "latest",
     "nodemon": "^1.11.0",
     "path": "^0.12.7",
-    "soap": "^0.19.0",
     "unirest": "^0.5.1",
     "wiredep": "^4.0.0",
     "x2js": "^3.1.0"
-  },
-  "devDependencies": {
-    "browser-sync": "^2.18.8",
-    "gulp": "^3.9.1",
-    "gulp-notify": "^3.0.0",
-    "gulp-refresh": "^1.1.0",
-    "gulp-watch": "^4.3.11"
   }
 }
